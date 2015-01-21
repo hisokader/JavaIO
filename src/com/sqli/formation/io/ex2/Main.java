@@ -1,5 +1,6 @@
 package com.sqli.formation.io.ex2;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -28,8 +29,19 @@ public class Main {
 		// }
 
 		List<Person> persons = ReadAllPersons(fileReader);
-		writeAllPerson(fileWriter, persons);
+		serializePersons(persons);
+		//writeAllPerson(fileWriter, persons);
 
+	}
+
+	private static void serializePersons(List<Person> persons)
+			throws FileNotFoundException, IOException {
+		ObjectWriter ow=new ObjectWriter("serialize.txt");
+		ow.open();
+		for (Person person : persons) {
+			ow.writeText(person);
+		}
+		ow.close();
 	}
 
 	private static List<Person> ReadAllPersons(FileReader fileReader)

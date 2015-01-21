@@ -3,8 +3,9 @@ package com.sqli.formation.io;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
-public class FileWriter implements WriteIO {
+public class FileWriter implements WriteIO<Serializable> {
 	private final File file;
 	private BufferedWriter out;
 
@@ -13,8 +14,8 @@ public class FileWriter implements WriteIO {
 	}
 
 	@Override
-	public void writeText(String text) throws IOException {
-		out.append(text.subSequence(0, text.length() - 1));
+	public void writeText(Serializable text) throws IOException {
+		out.append(((String)text).subSequence(0, ((String)text).length() - 1));
 		out.newLine();
 	}
 
@@ -27,5 +28,4 @@ public class FileWriter implements WriteIO {
 	public void close() throws IOException {
 		out.close();
 	}
-
 }
