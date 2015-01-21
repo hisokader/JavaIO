@@ -18,7 +18,7 @@ public class FileReader implements ReadIO<String> {
 	public String read() throws IOException {
 		if (in.ready())
 			return in.readLine();
-		return "";
+		return null;
 	}
 
 	@Override

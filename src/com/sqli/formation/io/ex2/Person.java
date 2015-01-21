@@ -5,9 +5,9 @@ import java.util.Date;
 public class Person {
 	private final String firstName;
 	private final String lastName;
-	private final Date creation;
+	private final String creation;
 
-	public Person(String firstName, String lastName, Date creation) {
+	public Person(String firstName, String lastName, String creation) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.creation = creation;
@@ -15,7 +15,8 @@ public class Person {
 	
 	@Override
 	public String toString() {
-		return lastName+";"+firstName+";"+creation;
+		//return lastName+";"+firstName+";"+creation;
+		return lastName+"\n"+firstName+"\n"+creation+"\n---------------------------------------------";
 	}
 
 }
