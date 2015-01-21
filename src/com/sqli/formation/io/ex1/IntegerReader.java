@@ -31,7 +31,7 @@ public class IntegerReader implements ReadIO<Integer> {
 
 	@Override
 	public Integer read() throws IOException {
-		return reader.readInt()();
+		return reader.readInt();
 	}
 
 }

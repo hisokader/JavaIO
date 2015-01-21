@@ -6,6 +6,7 @@ import com.sqli.formation.io.WriteIO;
 
 public class IntegerWriter implements WriteIO {
 
+	// private final DataOutputStream writer;
 	@Override
 	public void open() throws IOException {
 		// TODO Auto-generated method stub

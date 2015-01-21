@@ -1,31 +1,34 @@
 package com.sqli.formation.io;
 
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
-
-public class FileReader implements ReadIO{
+public class FileReader implements ReadIO<String> {
 
 	private final File file;
-	
+	private BufferedReader in;
+
 	public FileReader(String path) {
-		file=new File(path);
+		file = new File(path);
+		
 	}
-	
 
 	@Override
 	public String read() throws IOException {
-		DataInputStream in=new DataInputStream(new BufferedInputStream(new FileInputStream(file)));
-		StringBuilder buffer=new StringBuilder();
-		int charactere;
-		while((charactere=in.read())!=-1){
-			buffer.append((char)charactere);
-		}
+		if (in.ready())
+			return in.readLine();
+		return "";
+	}
+
+	@Override
+	public void open() throws IOException {
+		in = new BufferedReader(new java.io.FileReader(file));
+	}
+
+	@Override
+	public void close() throws IOException {
 		in.close();
-		return buffer.toString();
 	}
 
 }
