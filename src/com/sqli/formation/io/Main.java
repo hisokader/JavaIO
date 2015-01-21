@@ -6,7 +6,7 @@ public class Main {
 	public static void main(String[] args) {
 		String path="..\\file.txt";
 		WriteIO writer=new FileWriter(path);
-		ReadIO reader=new FileReader(path);
+		ReadIO reader=new FileReaderIO(path);
 		try {
 			writer.writeText("hello");
 		} catch (IOException e) {
